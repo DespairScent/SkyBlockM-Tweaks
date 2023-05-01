@@ -14,7 +14,6 @@ public abstract class ArmorStandMixin {
 	@Inject(method = "tickCramming()V", at = @At("HEAD"), cancellable = true)
 	private void injected(CallbackInfo ci) {
 		if (ModLoader.ENABLED &&
-				((ArmorStandEntity)(Object)this).isMarker() &&
 				MinecraftClient.getInstance().world != null && MinecraftClient.getInstance().world.isClient()) {
 			ci.cancel();
 		}
