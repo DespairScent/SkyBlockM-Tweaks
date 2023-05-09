@@ -22,13 +22,7 @@ public abstract class GameRendererMixin {
                     target = "Lnet/minecraft/entity/projectile/ProjectileUtil;raycast(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/function/Predicate;D)Lnet/minecraft/util/hit/EntityHitResult;")
     )
     private EntityHitResult injected(Entity entity, Vec3d min, Vec3d max, Box box, Predicate<Entity> predicate, double d) {
-        EntityHitResult result = ProjectileUtil.raycast(entity, min, max, box, predicate, d);
-        if (result != null && result.getEntity() instanceof ItemFrameEntity e) {
-            if (e.isInvisible()) {
-                return null;
-            }
-        }
-        return result;
+        return ProjectileUtil.raycast(entity, min, max, box, e -> !(e instanceof ItemFrameEntity && e.isInvisible()) && predicate.test(e), d);
     }
 
 }
