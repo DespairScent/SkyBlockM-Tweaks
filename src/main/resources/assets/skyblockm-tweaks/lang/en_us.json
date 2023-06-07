@@ -1,0 +1,21 @@
+{
+  "skyblockm-tweaks.config.title": "SkyBlockM Tweaks",
+
+  "skyblockm-tweaks.config.general": "Общие",
+  "skyblockm-tweaks.config.general.optimize": "Включить оптимизации",
+
+  "skyblockm-tweaks.config.optimize": "Модули оптимизации",
+  "skyblockm-tweaks.config.optimize.armorstandcramming": "ArmorStandCramming",
+  "skyblockm-tweaks.config.optimize.modelscaching": "ModelsCaching",
+  "skyblockm-tweaks.config.optimize.spectatorarmorstands": "SpectatorArmorStands",
+
+  "skyblockm-tweaks.config.qol": "QoL-улучшения",
+  "skyblockm-tweaks.config.qol.storagetargetingfix": "Исправление наведения на хранилище",
+  "skyblockm-tweaks.config.qol.moretooltipinfo": "Больше данных во всплывающем тексте",
+  "skyblockm-tweaks.config.qol.moretooltipinfo.desc": "Для хранилищ: показ предмета внутри",
+
+  "skyblockm-tweaks.keys": "SkyBlockM Tweaks",
+  "skyblockm-tweaks.keys.optimize": "Переключить оптимизацию",
+
+  "skyblockm-tweaks.interact.optimizeswitch": "Оптимизации SkyBlockM: "
+}

@@ -3,8 +3,8 @@
   "id": "${id}",
   "version": "${version}",
 
-  "name": "SkyBlockM AntiLag",
-  "description": "Remove lags on \"heavy\" islands",
+  "name": "SkyBlockM Tweaks",
+  "description": "Улучшает игровой опыт на сервере SkyBlockM\n\nДля настройки необходим Cloth Config API",
   "authors": ["DespairScent"],
 
   "license": "MIT",
@@ -13,17 +13,25 @@
 
   "entrypoints": {
     "client": [
-      "despairscent.skyblockm.antilag.ModLoader"
+      "despairscent.skyblockm.tweaks.ModLoader"
+    ],
+    "modmenu": [
+      "despairscent.skyblockm.tweaks.config.ModMenuImplementation"
     ]
   },
   "mixins": [
-    "skyblockm-antilag.mixins.json"
+    "skyblockm-tweaks.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.12.13",
-    "fabric-api": "*",
     "minecraft": "~1.19.3",
-    "java": ">=17"
+    "java": ">=17",
+    "fabric-lifecycle-events-v1": "*",
+    "fabric-key-binding-api-v1": "*"
+  },
+  "recommends": {
+    "modmenu": "*",
+    "cloth-config2": "*"
   }
 }

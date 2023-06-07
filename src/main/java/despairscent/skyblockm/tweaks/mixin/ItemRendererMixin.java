@@ -1,6 +1,5 @@
-package despairscent.skyblockm.antilag.mixin;
+package despairscent.skyblockm.tweaks.mixin;
 
-import despairscent.skyblockm.antilag.ModLoader;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
@@ -11,7 +10,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import java.util.Map;
+import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.modelsCache;
 
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
@@ -22,15 +22,12 @@ public abstract class ItemRendererMixin {
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/item/ItemRenderer;getModel(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;I)Lnet/minecraft/client/render/model/BakedModel;"))
     private BakedModel replaceGetModel(ItemRenderer instance, ItemStack stack, World world, LivingEntity entity, int seed) {
-        if (ModLoader.ENABLED && stack.hasNbt() && stack.getNbt().contains("CustomModelData")) {
-            Map<Integer, BakedModel> cache = ModLoader.modelsCache.computeIfAbsent(stack.getItem(), k -> new Int2ObjectOpenHashMap<>());
-            int modelId =  stack.getNbt().getInt("CustomModelData");
-            BakedModel model = cache.get(modelId);
-            if (model == null) {
-                model = instance.getModel(stack, world, entity, seed);
-                cache.put(modelId, model);
-            }
-            return model;
+        if (config.general.optimize && config.optimize.modelsCaching &&
+                stack.hasNbt() && stack.getNbt().contains("CustomModelData")) {
+            int modelId = stack.getNbt().getInt("CustomModelData");
+            return modelsCache
+                    .computeIfAbsent(stack.getItem(), k -> new Int2ObjectOpenHashMap<>())
+                    .computeIfAbsent(modelId, k -> instance.getModel(stack, world, entity, seed));
         }
         return instance.getModel(stack, world, entity, seed);
     }
