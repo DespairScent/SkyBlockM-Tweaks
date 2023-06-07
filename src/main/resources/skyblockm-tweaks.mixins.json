@@ -1,12 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "despairscent.skyblockm.antilag.mixin",
+  "package": "despairscent.skyblockm.tweaks.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
   "client": [
     "ArmorStandMixin",
+    "EntityMixin",
     "GameRendererMixin",
+    "InGameHudMixin",
     "ItemRendererMixin",
     "ResourceReloadMixin"
   ],
