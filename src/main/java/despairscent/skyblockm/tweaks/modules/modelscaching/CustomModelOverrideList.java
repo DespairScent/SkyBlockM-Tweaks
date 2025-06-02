@@ -2,7 +2,6 @@ package despairscent.skyblockm.tweaks.modules.modelscaching;
 
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.Baker;
-import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.client.render.model.json.ModelOverrideList;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.component.DataComponentTypes;
@@ -19,7 +18,7 @@ import static despairscent.skyblockm.tweaks.ModUtils.config;
 
 public class CustomModelOverrideList extends ModelOverrideList {
 
-    private static final Identifier TYPE_CUSTOM_MODEL = Identifier.of("minecraft", "custom_model_data");
+    private static final Identifier TYPE_CUSTOM_MODEL = Identifier.ofVanilla("custom_model_data");
 
     private final ModelOverrideList original;
 
@@ -27,8 +26,8 @@ public class CustomModelOverrideList extends ModelOverrideList {
 
     private final BakedModel fallbackModel;
 
-    public CustomModelOverrideList(Baker baker, JsonUnbakedModel parent, ModelOverrideList original) {
-        super(baker, parent, Collections.emptyList());
+    public CustomModelOverrideList(Baker baker, ModelOverrideList original) {
+        super(baker, Collections.emptyList());
         this.original = original;
 
         if (original.conditionTypes.length != 1 || !original.conditionTypes[0].equals(TYPE_CUSTOM_MODEL)) {
@@ -48,7 +47,7 @@ public class CustomModelOverrideList extends ModelOverrideList {
                 return;
             }
 
-            int modelId = MathHelper.ceil(override.conditions[0].threshold);
+            int modelId = MathHelper.ceil(override.conditions[0].threshold());
             // Игнорируем ID вне порядка
             if (modelIdPrev == null || modelId < modelIdPrev) {
                 this.cache.put(modelId, override.model);
@@ -64,23 +63,17 @@ public class CustomModelOverrideList extends ModelOverrideList {
     }
 
     @Override
-    public BakedModel apply(BakedModel model, ItemStack stack, ClientWorld world, LivingEntity entity, int seed) {
+    public BakedModel getModel(ItemStack stack, ClientWorld world, LivingEntity entity, int seed) {
         if (this.cache != null && config.modules.fpsOptimize && config.fpsOptimize.modelsCaching) {
             if (stack.get(DataComponentTypes.CUSTOM_MODEL_DATA) instanceof CustomModelDataComponent(int modelId)) {
                 var entry = this.cache.floorEntry(modelId);
                 if (entry != null) {
-                    if (entry.getValue() == null) {
-                        return model;
-                    }
                     return entry.getValue();
                 }
             }
-            if (this.fallbackModel != null) {
-                return this.fallbackModel;
-            }
-            return model;
+            return this.fallbackModel;
         }
-        return this.original.apply(model, stack, world, entity, seed);
+        return this.original.getModel(stack, world, entity, seed);
     }
 
 }
