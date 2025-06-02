@@ -27,6 +27,7 @@ public class ClothConfigImplementation {
                         .build());
         base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
                 builder.entryBuilder().startBooleanToggle(i18n("config.fpsOptimize.modelsCaching"), config.fpsOptimize.modelsCaching)
+                        .setTooltip(i18n("config.fpsOptimize.modelsCaching.tooltip"))
                         .setDefaultValue(Config.DEFAULT.fpsOptimize.modelsCaching)
                         .setSaveConsumer(value -> config.fpsOptimize.modelsCaching = value)
                         .build()
