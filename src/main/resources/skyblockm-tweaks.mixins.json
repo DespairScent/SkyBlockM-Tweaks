@@ -9,7 +9,6 @@
     "DrawContextMixin",
     "GameRendererMixin",
     "InGameHudMixin",
-    "ItemRenderOptimizeMixin",
     "MinecraftClientMixin"
   ],
   "injectors": {
