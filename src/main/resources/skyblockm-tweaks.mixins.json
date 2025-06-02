@@ -6,6 +6,7 @@
   "client": [
     "AnvilScreenMixin",
     "DrawContextMixin",
+    "EntityMixin",
     "GameRendererMixin",
     "InGameHudMixin",
     "MinecraftClientMixin"
