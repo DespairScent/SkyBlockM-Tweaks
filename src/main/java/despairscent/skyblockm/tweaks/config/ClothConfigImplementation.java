@@ -21,17 +21,16 @@ public class ClothConfigImplementation {
                 .setTitle(i18n("config.title"));
         ConfigCategory base = builder.getOrCreateCategory(Text.empty());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.fpsOptimize"), config.modules.fpsOptimize)
-                        .setDefaultValue(Config.DEFAULT.modules.fpsOptimize)
-                        .setSaveConsumer(value -> config.modules.fpsOptimize = value)
-                        .build());
-        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
-                builder.entryBuilder().startBooleanToggle(i18n("config.fpsOptimize.modelsCaching"), config.fpsOptimize.modelsCaching)
-                        .setTooltip(i18n("config.fpsOptimize.modelsCaching.tooltip"))
-                        .setDefaultValue(Config.DEFAULT.fpsOptimize.modelsCaching)
-                        .setSaveConsumer(value -> config.fpsOptimize.modelsCaching = value)
-                        .build()
-        )).build());
+        // base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.fpsOptimize"), config.modules.fpsOptimize)
+        //                 .setDefaultValue(Config.DEFAULT.modules.fpsOptimize)
+        //                 .setSaveConsumer(value -> config.modules.fpsOptimize = value)
+        //                 .build());
+        // base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
+        //         builder.entryBuilder().startBooleanToggle(i18n("config.fpsOptimize.modelsCaching"), config.fpsOptimize.modelsCaching)
+        //                 .setDefaultValue(Config.DEFAULT.fpsOptimize.modelsCaching)
+        //                 .setSaveConsumer(value -> config.fpsOptimize.modelsCaching = value)
+        //                 .build()
+        // )).build());
 
         base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.storageTargetingFix"), config.modules.storageTargetingFix)
                 .setTooltip(i18n("config.modules.storageTargetingFix.tooltip"))
