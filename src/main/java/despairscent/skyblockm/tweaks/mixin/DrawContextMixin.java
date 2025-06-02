@@ -48,7 +48,7 @@ public class DrawContextMixin {
     @Inject(method = "drawItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;IIII)V",
             at = @At("HEAD"))
     private void drawItemInjectHead(LivingEntity entity, World world, ItemStack itemStack, int x, int y, int seed, int z, CallbackInfo ci) {
-        if (!config.modules.renderItemInside || 
+        if (!config.modules.renderItemInside ||
                 !itemStack.contains(DataComponentTypes.CUSTOM_MODEL_DATA) ||
                 !itemStack.contains(DataComponentTypes.CUSTOM_DATA)) {
             return;
@@ -119,12 +119,11 @@ public class DrawContextMixin {
             drawOriginal = config.renderItemInside.storage.drawOriginal;
             itemInside = itemStackFromNbtPre1_20_5(customData.getCompound("ItemStack"));
         } else if (itemStack.getItem() == Items.IRON_HORSE_ARMOR && modelId == 2001) {
-            if (!customData.contains("StoredItem") ||
-                    !testRender(config.renderItemInside.crystalMemory)) {
+            if (!testRender(config.renderItemInside.crystalMemory)) {
                 return;
             }
             drawOriginal = config.renderItemInside.crystalMemory.drawOriginal;
-            itemInside = itemStackFromIdentifier(customData.getString("StoredItem"));
+            itemInside = itemStackFromCrystalMemory(customData);
             if (itemInside == null) {
                 return;
             }
@@ -165,50 +164,74 @@ public class DrawContextMixin {
     }
 
     @Unique
-    private static ItemStack itemStackFromIdentifier(String identifierStr) {
-        Item item = Registries.ITEM.get(Identifier.tryParse(identifierStr));
-        if (item != Items.AIR) {
-            return new ItemStack(item);
-        }
+    private static ItemStack itemStackFromCrystalMemory(NbtCompound nbt) {
+        Item item;
         int modelId;
-        switch (identifierStr) {
-            case "general:tin_ingot":
-                item = Items.PAPER;
-                modelId = 204;
-                break;
-            case "general:bronze_ingot":
-                item = Items.PAPER;
-                modelId = 304;
-                break;
-            case "general:steel_ingot":
-                item = Items.PAPER;
-                modelId = 1104;
-                break;
-            case "general:lead_ingot":
-                item = Items.PAPER;
-                modelId = 1004;
-                break;
-            case "electricity:iridium_shard":
-                item = Items.PAPER;
-                modelId = 4015;
-                break;
-            case "electricity:sunnarium_shard":
-                item = Items.PAPER;
-                modelId = 4019;
-                break;
-            case "electricity:silica":
-                item = Items.PAPER;
-                modelId = 4010;
-                break;
-            case "quantum:enderium":
-                item = Items.PAPER;
-                modelId = 8002;
-                break;
-            default:
-                return null;
+        item_definition:
+        {
+            if (nbt.get("StoredItem_Display") instanceof NbtCompound nbtStoredItem &&
+                    nbtStoredItem.contains("id", NbtElement.STRING_TYPE) &&
+                    nbtStoredItem.contains("CustomModelData", NbtElement.NUMBER_TYPE)) {
+                item = Registries.ITEM.get(Identifier.tryParse(nbtStoredItem.getString("id")));
+                if (item != Items.AIR) {
+                    modelId = nbtStoredItem.getInt("CustomModelData");
+                    break item_definition;
+                }
+            }
+
+            if (nbt.contains("StoredItem", NbtElement.STRING_TYPE)) {
+                String identifierStr = nbt.getString("StoredItem");
+
+                item = Registries.ITEM.get(Identifier.tryParse(identifierStr));
+                if (item != Items.AIR) {
+                    modelId = 0;
+                    break item_definition;
+                }
+
+                // TODO: удалить [по ненадобности] после обновы сервера
+                switch (identifierStr) {
+                    case "general:tin_ingot":
+                        item = Items.PAPER;
+                        modelId = 204;
+                        break item_definition;
+                    case "general:bronze_ingot":
+                        item = Items.PAPER;
+                        modelId = 304;
+                        break item_definition;
+                    case "general:steel_ingot":
+                        item = Items.PAPER;
+                        modelId = 1104;
+                        break item_definition;
+                    case "general:lead_ingot":
+                        item = Items.PAPER;
+                        modelId = 1004;
+                        break item_definition;
+                    case "electricity:iridium_shard":
+                        item = Items.PAPER;
+                        modelId = 4015;
+                        break item_definition;
+                    case "electricity:sunnarium_shard":
+                        item = Items.PAPER;
+                        modelId = 4019;
+                        break item_definition;
+                    case "electricity:silica":
+                        item = Items.PAPER;
+                        modelId = 4010;
+                        break item_definition;
+                    case "quantum:enderium":
+                        item = Items.PAPER;
+                        modelId = 8002;
+                        break item_definition;
+                }
+            }
+
+            return null;
         }
+
         ItemStack stack = new ItemStack(item);
-        stack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(modelId));
+        if (modelId != 0) {
+            stack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(modelId));
+        }
         return stack;
     }
 
