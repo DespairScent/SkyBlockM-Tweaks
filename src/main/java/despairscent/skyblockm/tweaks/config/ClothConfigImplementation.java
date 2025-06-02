@@ -91,6 +91,12 @@ public class ClothConfigImplementation {
                 .setSaveConsumer(value -> config.modules.compactGenome = value)
                 .build());
 
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.hideHiddenArmorStands"), config.modules.hideHiddenArmorStands)
+                .setTooltip(i18n("config.modules.hideHiddenArmorStands.tooltip"))
+                .setDefaultValue(Config.DEFAULT.modules.hideHiddenArmorStands)
+                .setSaveConsumer(value -> config.modules.hideHiddenArmorStands = value)
+                .build());
+
         builder.setSavingRunnable(() -> config.save());
 
         return builder.build();

@@ -14,6 +14,8 @@
   "skyblockm-tweaks.config.modules.inputLagFix": "Исправление лагов ввода текста в кастомных интерфейсах",
   "skyblockm-tweaks.config.modules.compactGenome": "Компактный показ генов пчел",
   "skyblockm-tweaks.config.modules.compactGenome.tooltip": "Только для опытных пчеловодов, большая часть подробностей будет скрыта",
+  "skyblockm-tweaks.config.modules.hideHiddenArmorStands": "Скрытие невидимых стоек для брони",
+  "skyblockm-tweaks.config.modules.hideHiddenArmorStands.tooltip": "Скрывает видимые в режиме наблюдения невидимые стойки для брони\nТолько для модерации, которой нравится призраками наблюдать за предметами в трубах с максимальной дистанцией отображения в настройках",
 
   "skyblockm-tweaks.config.fpsOptimize.modelsCaching": "Кеширование моделей кастомных предметов/блоков",
 
