@@ -28,6 +28,7 @@ public class Config {
         public boolean renderItemInside = true;
         public boolean inputLagFix = true;
         public boolean compactGenome = false;
+        public boolean hideHiddenArmorStands = false;
     }
 
     public static class FpsOptimize {
