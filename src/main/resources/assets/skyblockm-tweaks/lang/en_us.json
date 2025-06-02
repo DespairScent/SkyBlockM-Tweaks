@@ -16,6 +16,7 @@
   "skyblockm-tweaks.config.modules.compactGenome.tooltip": "Только для опытных пчеловодов, большая часть подробностей будет скрыта",
 
   "skyblockm-tweaks.config.fpsOptimize.modelsCaching": "Кеширование моделей кастомных предметов/блоков",
+  "skyblockm-tweaks.config.fpsOptimize.modelsCaching.tooltip": "[!] Обновление сервера v7.1.6 (21.02.2025) оптимизировало модели, так что теперь эффект от этой опции минимальный",
 
   "skyblockm-tweaks.config.moreTooltipInfo.storage": "Хранилище",
   "skyblockm-tweaks.config.moreTooltipInfo.storage.tooltip": "Показ предмета внутри",
