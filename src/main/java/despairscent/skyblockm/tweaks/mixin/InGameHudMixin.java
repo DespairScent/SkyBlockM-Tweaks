@@ -10,6 +10,7 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -30,34 +31,26 @@ public class InGameHudMixin {
         return getExtendedName(itemStack);
     }
 
+    @Unique
     private static Text getExtendedName(ItemStack itemStack) {
         if (!config.modules.moreTooltipInfo) {
             return itemStack.getName();
         }
 
         int modelId = ModUtils.getCustomModelId(itemStack);
+
         if (itemStack.getItem() == Items.BARRIER && modelId >= 1010 && modelId <= 1013) { // storage
             if (!config.moreTooltipInfo.storage) {
                 return itemStack.getName();
             }
 
-            NbtCompound nbtDisplay = itemStack.getSubNbt(ItemStack.DISPLAY_KEY);
-            if (nbtDisplay == null) {
-                return itemStack.getName();
-            }
-            NbtList lore = nbtDisplay.getList(ItemStack.LORE_KEY, NbtElement.STRING_TYPE);
-            if (lore.size() != 4) {
+            return getExtendedNameForStorage(itemStack);
+        } else if (itemStack.getItem() == Items.BARRIER && modelId >= 1020 && modelId <= 1023) { // fluid storage
+            if (!config.moreTooltipInfo.fluidStorage) {
                 return itemStack.getName();
             }
 
-            try {
-                Text itemStr = Text.Serialization.fromJson(lore.getString(3));
-                return Text.empty().append(itemStack.getName())
-                        .append(Text.literal(" <").styled(style -> style.withColor(Formatting.WHITE).withItalic(false)))
-                        .append(itemStr)
-                        .append(Text.literal(">").styled(style -> style.withColor(Formatting.WHITE).withItalic(false)));
-            } catch (Exception e) {
-            }
+            return getExtendedNameForStorage(itemStack);
         } else if (itemStack.getItem() == Items.IRON_HORSE_ARMOR && modelId == 2001) { // memory crystal
             if (!config.moreTooltipInfo.crystalMemory) {
                 return itemStack.getName();
@@ -82,6 +75,28 @@ public class InGameHudMixin {
             }
         }
 
+        return itemStack.getName();
+    }
+
+    @Unique
+    private static Text getExtendedNameForStorage(ItemStack itemStack) {
+        NbtCompound nbtDisplay = itemStack.getSubNbt(ItemStack.DISPLAY_KEY);
+        if (nbtDisplay == null) {
+            return itemStack.getName();
+        }
+        NbtList lore = nbtDisplay.getList(ItemStack.LORE_KEY, NbtElement.STRING_TYPE);
+        if (lore.size() != 4) {
+            return itemStack.getName();
+        }
+
+        try {
+            Text itemStr = Text.Serialization.fromJson(lore.getString(3));
+            return Text.empty().append(itemStack.getName())
+                    .append(Text.literal(" <").styled(style -> style.withColor(Formatting.WHITE).withItalic(false)))
+                    .append(itemStr)
+                    .append(Text.literal(">").styled(style -> style.withColor(Formatting.WHITE).withItalic(false)));
+        } catch (Exception e) {
+        }
         return itemStack.getName();
     }
 

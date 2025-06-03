@@ -20,6 +20,8 @@
 
   "skyblockm-tweaks.config.moreTooltipInfo.storage": "Хранилище",
   "skyblockm-tweaks.config.moreTooltipInfo.storage.tooltip": "Показ предмета внутри",
+  "skyblockm-tweaks.config.moreTooltipInfo.fluidStorage": "Жидкостное хранилище",
+  "skyblockm-tweaks.config.moreTooltipInfo.fluidStorage.tooltip": "Показ жидкости внутри",
   "skyblockm-tweaks.config.moreTooltipInfo.crystalMemory": "Кристалл памяти",
   "skyblockm-tweaks.config.moreTooltipInfo.crystalMemory.tooltip": "Показ записанного предмета",
 
