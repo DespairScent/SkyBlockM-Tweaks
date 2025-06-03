@@ -4,7 +4,6 @@
   "skyblockm-tweaks.config.subcategory": "  [Расширенная настройка]",
 
   "skyblockm-tweaks.config.modules": "Модули",
-  "skyblockm-tweaks.config.modules.fpsOptimize": "Оптимизации FPS",
   "skyblockm-tweaks.config.modules.storageTargetingFix": "Исправление наведения на хранилище",
   "skyblockm-tweaks.config.modules.storageTargetingFix.tooltip": "В некоторых случаях, без исправления, клики не проходят (например с ключом в руке)",
   "skyblockm-tweaks.config.modules.moreTooltipInfo": "Подробности во всплывающей подсказке предмета",
@@ -35,11 +34,6 @@
 
   "skyblockm-tweaks.config.inputLagFix.recipesSearch": "При поиске по рецептам",
   "skyblockm-tweaks.config.inputLagFix.esTerminalSearch": "При поиске в ES-терминале",
-
-  "skyblockm-tweaks.keys": "SkyBlockM Tweaks",
-  "skyblockm-tweaks.keys.optimize": "Переключить оптимизацию",
-
-  "skyblockm-tweaks.message.optimizeSwitch": "Оптимизации SkyBlockM: ",
 
   "modmenu.summaryTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM",
   "modmenu.descriptionTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM посредством различных оптимизаций и QoL-фич\nДля настройки необходим Cloth Config API"
