@@ -17,20 +17,14 @@ import static despairscent.skyblockm.tweaks.ModUtils.config;
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
 
-    @Redirect(
-            method = "renderHeldItemTooltip",
-            at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/item/ItemStack;getName()Lnet/minecraft/text/Text;")
-    )
+    @Redirect(method = "renderHeldItemTooltip",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getName()Lnet/minecraft/text/Text;"))
     private Text itemNameModifier1(ItemStack itemStack) {
         return getExtendedName(itemStack);
     }
 
-    @Redirect(
-            method = "tick()V",
-            at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/item/ItemStack;getName()Lnet/minecraft/text/Text;")
-    )
+    @Redirect(method = "tick()V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getName()Lnet/minecraft/text/Text;"))
     private Text itemNameModifier2(ItemStack itemStack) {
         return getExtendedName(itemStack);
     }
