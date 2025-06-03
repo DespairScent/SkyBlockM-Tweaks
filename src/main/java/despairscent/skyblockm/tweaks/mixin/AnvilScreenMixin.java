@@ -18,36 +18,27 @@ import static despairscent.skyblockm.tweaks.ModUtils.testCustomScreen;
 @Mixin(AnvilScreen.class)
 public abstract class AnvilScreenMixin implements IAnvilScreenMixin {
 
-    @Unique
-    boolean fixInputLag = false;
+    @Unique boolean fixInputLag = false;
 
-    @Unique
-    boolean fixInputLagScreenChainMode = false;
+    @Unique boolean fixInputLagScreenChainMode = false;
 
-    @Unique
-    boolean inputStarted = false;
+    @Unique boolean inputStarted = false;
 
-    @Unique
-    TextFieldWidget nameFieldPrevious = null;
+    @Unique TextFieldWidget nameFieldPrevious = null;
 
-    @Unique
-    boolean nameFieldInherited = false;
+    @Unique boolean nameFieldInherited = false;
 
-    @Shadow
-    private TextFieldWidget nameField;
+    @Shadow private TextFieldWidget nameField;
 
-    @Shadow
-    protected abstract void onRenamed(String name);
+    @Shadow protected abstract void onRenamed(String name);
 
     @Override
     public void skyblockm_tweaks$handlePrevious(AnvilScreen screen) {
         this.nameFieldPrevious = ((AnvilScreenMixin) (Object) screen).nameField;
     }
 
-    @Inject(
-            method = "setup",
-            at = @At("TAIL")
-    )
+    @Inject(method = "setup",
+            at = @At("TAIL"))
     private void setupInject(CallbackInfo ci) {
         if (!config.modules.inputLagFix) {
             return;
@@ -73,11 +64,9 @@ public abstract class AnvilScreenMixin implements IAnvilScreenMixin {
         }
     }
 
-    @Inject(
-            method = "onSlotUpdate",
+    @Inject(method = "onSlotUpdate",
             at = @At("HEAD"),
-            cancellable = true
-    )
+            cancellable = true)
     private void onSlotUpdateInject(ScreenHandler handler, int slotId, ItemStack stack, CallbackInfo ci) {
         if (this.fixInputLag && slotId == 0 && !stack.isEmpty() && !stack.getName().getString().isEmpty()) {
             if (this.inputStarted) {
