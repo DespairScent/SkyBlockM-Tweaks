@@ -37,6 +37,7 @@ public class Config {
 
     public static class MoreTooltipInfo {
         public boolean storage = true;
+        public boolean fluidStorage = true;
         public boolean crystalMemory = true;
     }
 
