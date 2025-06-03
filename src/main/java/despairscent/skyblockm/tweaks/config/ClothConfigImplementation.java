@@ -38,6 +38,11 @@ public class ClothConfigImplementation {
                         .setDefaultValue(Config.DEFAULT.moreTooltipInfo.storage)
                         .setSaveConsumer(value -> config.moreTooltipInfo.storage = value)
                         .build(),
+                builder.entryBuilder().startBooleanToggle(i18n("config.moreTooltipInfo.fluidStorage"), config.moreTooltipInfo.fluidStorage)
+                        .setTooltip(i18n("config.moreTooltipInfo.fluidStorage.tooltip"))
+                        .setDefaultValue(Config.DEFAULT.moreTooltipInfo.fluidStorage)
+                        .setSaveConsumer(value -> config.moreTooltipInfo.fluidStorage = value)
+                        .build(),
                 builder.entryBuilder().startBooleanToggle(i18n("config.moreTooltipInfo.crystalMemory"), config.moreTooltipInfo.crystalMemory)
                         .setTooltip(i18n("config.moreTooltipInfo.crystalMemory.tooltip"))
                         .setDefaultValue(Config.DEFAULT.moreTooltipInfo.crystalMemory)
