@@ -35,13 +35,9 @@ import static despairscent.skyblockm.tweaks.ModUtils.config;
 @Mixin(DrawContext.class)
 public class DrawContextMixin {
 
-    @Final
-    @Shadow
-    private MinecraftClient client;
+    @Shadow @Final private MinecraftClient client;
 
-    @Final
-    @Shadow
-    private MatrixStack matrices;
+    @Shadow @Final private MatrixStack matrices;
 
     @Shadow @Final private VertexConsumerProvider.Immediate vertexConsumers;
 

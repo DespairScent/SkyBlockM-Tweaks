@@ -20,10 +20,7 @@ import static despairscent.skyblockm.tweaks.ModUtils.config;
 public abstract class GameRendererMixin {
 
     @Redirect(method = "findCrosshairTarget",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/entity/projectile/ProjectileUtil;raycast(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/function/Predicate;D)Lnet/minecraft/util/hit/EntityHitResult;")
-    )
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/ProjectileUtil;raycast(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/function/Predicate;D)Lnet/minecraft/util/hit/EntityHitResult;"))
     private EntityHitResult updateTargetedEntityRaycastRedirect(Entity entity, Vec3d min, Vec3d max, Box box, Predicate<Entity> predicate, double d) {
         if (config.modules.storageTargetingFix) {
             return ProjectileUtil.raycast(entity, min, max, box, e ->
