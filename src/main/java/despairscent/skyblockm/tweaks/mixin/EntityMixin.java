@@ -18,7 +18,7 @@ public abstract class EntityMixin {
 	@Redirect(method = "isInvisibleTo",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSpectator()Z"))
 	private boolean redirectSpectatorCheck(PlayerEntity instance) {
-		if (CONFIG.modules.hideHiddenArmorStands && this.getType() == EntityType.ARMOR_STAND) {
+		if (CONFIG.hideHiddenArmorStands.enabled && this.getType() == EntityType.ARMOR_STAND) {
 			return false;
 		}
 		return instance.isSpectator();

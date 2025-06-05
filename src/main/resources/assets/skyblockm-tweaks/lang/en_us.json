@@ -1,23 +1,19 @@
 {
-  "skyblockm-tweaks.config.title": "SkyBlockM Tweaks",
+  "modmenu.summaryTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM",
+  "modmenu.descriptionTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM посредством различных оптимизаций и QoL-фич\nДля настройки необходим Cloth Config API",
 
-  "skyblockm-tweaks.config.subcategory": "  [Расширенная настройка]",
 
-  "skyblockm-tweaks.config.modules": "Модули",
-  "skyblockm-tweaks.config.modules.storageTargetingFix": "Исправление наведения на хранилище",
-  "skyblockm-tweaks.config.modules.storageTargetingFix.tooltip": "В некоторых случаях, без исправления, клики не проходят (например с ключом в руке)",
-  "skyblockm-tweaks.config.modules.moreTooltipInfo": "Подробности во всплывающей подсказке предмета",
-  "skyblockm-tweaks.config.modules.moreTooltipInfo.tooltip": "Всплывающая подсказка - та, что появляется при смене слота в хотбара",
-  "skyblockm-tweaks.config.modules.renderItemInside": "Рендер внутреннего предмета",
-  "skyblockm-tweaks.config.modules.renderItemInside.tooltip": "Например, показ цели ES шаблона при зажатом Shift (по умолчанию)",
-  "skyblockm-tweaks.config.modules.inputLagFix": "Исправление лагов ввода текста в кастомных интерфейсах",
-  "skyblockm-tweaks.config.modules.esTerminalScroll": "Прокрутка в ES терминале",
-  "skyblockm-tweaks.config.modules.compactGenome": "Компактный показ генов пчел",
-  "skyblockm-tweaks.config.modules.compactGenome.tooltip": "Только для опытных пчеловодов, большая часть подробностей будет скрыта",
-  "skyblockm-tweaks.config.modules.hideHiddenArmorStands": "Скрытие невидимых стоек для брони",
-  "skyblockm-tweaks.config.modules.hideHiddenArmorStands.tooltip": "Скрывает видимые в режиме наблюдения невидимые стойки для брони\nТолько для модерации, которой нравится призраками наблюдать за предметами в трубах с максимальной дистанцией отображения в настройках",
+  "skyblockm-tweaks.config.base.title": "SkyBlockM Tweaks",
+  "skyblockm-tweaks.config.base.moduleSetup": "  [Расширенная настройка]",
 
-  "skyblockm-tweaks.config.fpsOptimize.modelsCaching": "Кеширование моделей кастомных предметов/блоков",
+
+  "skyblockm-tweaks.config.storageTargetingFix": "Исправление наведения на хранилище",
+  "skyblockm-tweaks.config.storageTargetingFix.tooltip": "В некоторых случаях, без исправления, клики не проходят (например с ключом в руке)",
+
+
+  "skyblockm-tweaks.config.moreTooltipInfo": "Подробности во всплывающей подсказке предмета",
+  "skyblockm-tweaks.config.moreTooltipInfo.tooltip": "Всплывающая подсказка - та, что появляется при смене слота в хотбара",
+
 
   "skyblockm-tweaks.config.moreTooltipInfo.storage": "Хранилище",
   "skyblockm-tweaks.config.moreTooltipInfo.storage.tooltip": "Показ предмета внутри",
@@ -26,17 +22,27 @@
   "skyblockm-tweaks.config.moreTooltipInfo.crystalMemory": "Кристалл памяти",
   "skyblockm-tweaks.config.moreTooltipInfo.crystalMemory.tooltip": "Показ записанного предмета",
 
+
+  "skyblockm-tweaks.config.renderItemInside": "Рендер внутреннего предмета",
+  "skyblockm-tweaks.config.renderItemInside.tooltip": "Например, показ цели ES шаблона при зажатом Shift (по умолчанию)",
+
   "skyblockm-tweaks.config.renderItemInside.item.esPattern": "ES шаблон создания",
   "skyblockm-tweaks.config.renderItemInside.item.storage": "Хранилище",
   "skyblockm-tweaks.config.renderItemInside.item.crystalMemory": "Кристалл памяти",
 
-  "skyblockm-tweaks.config.renderItemInside.enabled": "Включено",
-  "skyblockm-tweaks.config.renderItemInside.renderAlways": "Показывать всегда (без Shift)",
-  "skyblockm-tweaks.config.renderItemInside.drawOriginal": "Иконка контейнера",
-  "skyblockm-tweaks.config.renderItemInside.bgColor": "Цвет фона",
+  "skyblockm-tweaks.config.renderItemInside.itemSetup.enabled": "Включено",
+  "skyblockm-tweaks.config.renderItemInside.itemSetup.renderAlways": "Показывать всегда (без Shift)",
+  "skyblockm-tweaks.config.renderItemInside.itemSetup.drawOriginal": "Иконка контейнера",
+  "skyblockm-tweaks.config.renderItemInside.itemSetup.bgColor": "Цвет фона",
 
-  "skyblockm-tweaks.config.inputLagFix.recipesSearch": "При поиске по рецептам",
-  "skyblockm-tweaks.config.inputLagFix.esTerminalSearch": "При поиске в ES-терминале",
+
+  "skyblockm-tweaks.config.textInputLagFix": "Исправление лагов ввода текста в кастомных интерфейсах",
+
+  "skyblockm-tweaks.config.textInputLagFix.recipesSearch": "При поиске по рецептам",
+  "skyblockm-tweaks.config.textInputLagFix.esTerminalSearch": "При поиске в ES-терминале",
+
+
+  "skyblockm-tweaks.config.esTerminalScroll": "Прокрутка в ES терминале",
 
   "skyblockm-tweaks.config.esTerminalScroll.wheel": "Прокрутка колесом мыши",
   "skyblockm-tweaks.config.esTerminalScroll.wheelModifier": "Клавиша для удержания с колесом мыши",
@@ -46,6 +52,11 @@
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey": "Лимит срабатывания прокрутки [Клавиши]",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimit.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
 
-  "modmenu.summaryTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM",
-  "modmenu.descriptionTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM посредством различных оптимизаций и QoL-фич\nДля настройки необходим Cloth Config API"
+
+  "skyblockm-tweaks.config.compactGenome": "Компактный показ генов пчел",
+  "skyblockm-tweaks.config.compactGenome.tooltip": "Только для опытных пчеловодов, большая часть подробностей будет скрыта",
+
+
+  "skyblockm-tweaks.config.hideHiddenArmorStands": "Скрытие невидимых стоек для брони",
+  "skyblockm-tweaks.config.hideHiddenArmorStands.tooltip": "Скрывает видимые в режиме наблюдения невидимые стойки для брони\nТолько для модерации, которой нравится призраками наблюдать за предметами в трубах с максимальной дистанцией отображения в настройках"
 }

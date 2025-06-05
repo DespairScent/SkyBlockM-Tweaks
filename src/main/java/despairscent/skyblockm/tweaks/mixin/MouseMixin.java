@@ -20,7 +20,7 @@ public class MouseMixin {
             order = 999, // Для выполнения перед IPN
             cancellable = true)
     private void onMouseScrollInject(long window, double horizontal, double vertical, CallbackInfo ci) {
-        if (!CONFIG.modules.esTerminalScroll || !CONFIG.esTerminalScroll.wheel) {
+        if (!CONFIG.esTerminalScroll.enabled || !CONFIG.esTerminalScroll.wheel) {
             return;
         }
         if (window != CLIENT.getWindow().getHandle() || !CLIENT.isOnThread()) {
