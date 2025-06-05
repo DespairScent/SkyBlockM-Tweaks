@@ -4,6 +4,7 @@ import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 
 import java.util.Arrays;
@@ -79,7 +80,41 @@ public class ClothConfigImplementation {
                         .build()
         )).build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.compactGenome"), config.modules.compactGenome)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.esTerminalScroll"), CONFIG.modules.esTerminalScroll)
+                .setDefaultValue(Config.DEFAULT.modules.esTerminalScroll)
+                .setSaveConsumer(value -> CONFIG.modules.esTerminalScroll = value)
+                .build());
+        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
+                builder.entryBuilder().startBooleanToggle(i18n("config.esTerminalScroll.wheel"), CONFIG.esTerminalScroll.wheel)
+                        .setDefaultValue(Config.DEFAULT.esTerminalScroll.wheel)
+                        .setSaveConsumer(value -> CONFIG.esTerminalScroll.wheel = value)
+                        .build(),
+                builder.entryBuilder().startKeyCodeField(i18n("config.esTerminalScroll.wheelModifier"), InputUtil.Type.KEYSYM.createFromCode(CONFIG.esTerminalScroll.wheelModifier))
+                        .setAllowModifiers(false)
+                        .setDefaultValue(InputUtil.Type.KEYSYM.createFromCode(Config.DEFAULT.esTerminalScroll.wheelModifier))
+                        .setKeySaveConsumer(value -> CONFIG.esTerminalScroll.wheelModifier = value.getCode())
+                        .build(),
+                builder.entryBuilder().startKeyCodeField(i18n("config.esTerminalScroll.keyUp"), InputUtil.Type.KEYSYM.createFromCode(CONFIG.esTerminalScroll.keyUp))
+                        .setAllowModifiers(false)
+                        .setDefaultValue(InputUtil.Type.KEYSYM.createFromCode(Config.DEFAULT.esTerminalScroll.keyUp))
+                        .setKeySaveConsumer(value -> CONFIG.esTerminalScroll.keyUp = value.getCode())
+                        .build(),
+                builder.entryBuilder().startKeyCodeField(i18n("config.esTerminalScroll.keyDown"), InputUtil.Type.KEYSYM.createFromCode(CONFIG.esTerminalScroll.keyDown))
+                        .setAllowModifiers(false)
+                        .setDefaultValue(InputUtil.Type.KEYSYM.createFromCode(Config.DEFAULT.esTerminalScroll.keyDown))
+                        .setKeySaveConsumer(value -> CONFIG.esTerminalScroll.keyDown = value.getCode())
+                        .build(),
+                builder.entryBuilder().startIntField(i18n("config.esTerminalScroll.actionLimitWheel"), CONFIG.esTerminalScroll.actionLimitWheel)
+                        .setDefaultValue(Config.DEFAULT.esTerminalScroll.actionLimitWheel)
+                        .setSaveConsumer(value -> CONFIG.esTerminalScroll.actionLimitWheel = value)
+                        .build(),
+                builder.entryBuilder().startIntField(i18n("config.esTerminalScroll.actionLimitKey"), CONFIG.esTerminalScroll.actionLimitKey)
+                        .setDefaultValue(Config.DEFAULT.esTerminalScroll.actionLimitKey)
+                        .setSaveConsumer(value -> CONFIG.esTerminalScroll.actionLimitKey = value)
+                        .build()
+        )).build());
+
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.compactGenome"), CONFIG.modules.compactGenome)
                 .setTooltip(i18n("config.modules.compactGenome.tooltip"))
                 .setDefaultValue(Config.DEFAULT.modules.compactGenome)
                 .setSaveConsumer(value -> CONFIG.modules.compactGenome = value)
