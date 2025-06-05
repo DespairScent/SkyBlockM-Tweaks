@@ -9,13 +9,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static despairscent.skyblockm.tweaks.ModUtils.CLIENT;
+
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
 
     @Inject(method = "setScreen",
             at = @At("HEAD"))
     private void setScreenInject(Screen screen, CallbackInfo ci) {
-        Screen previousScreen = MinecraftClient.getInstance().currentScreen;
+        Screen previousScreen = CLIENT.currentScreen;
         if (previousScreen instanceof AnvilScreen previous && screen instanceof AnvilScreen) {
             ((IAnvilScreenMixin) screen).skyblockm_tweaks$handlePrevious(previous);
         }

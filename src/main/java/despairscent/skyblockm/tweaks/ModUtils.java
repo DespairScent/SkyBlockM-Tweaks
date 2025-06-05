@@ -19,9 +19,10 @@ import java.util.function.Function;
 public class ModUtils {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("skyblockm-tweaks");
-    public static MinecraftClient client = MinecraftClient.getInstance();
 
-    public static Config config;
+    public static final MinecraftClient CLIENT = MinecraftClient.getInstance();
+
+    public static Config CONFIG;
 
     public static MutableText i18n(String key, Object... args) {
         return Text.translatable("skyblockm-tweaks." + key, args);

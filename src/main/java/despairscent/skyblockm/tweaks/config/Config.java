@@ -8,6 +8,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+import static despairscent.skyblockm.tweaks.ModUtils.LOGGER;
+
 public class Config {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -67,7 +69,7 @@ public class Config {
         try (FileReader reader = new FileReader(FabricLoader.getInstance().getConfigDir().resolve(FILENAME).toFile())) {
             return GSON.fromJson(reader, Config.class);
         } catch (Exception e) {
-            ModUtils.LOGGER.error("Load config error", e);
+            LOGGER.error("Load config error", e);
             return new Config();
         }
     }
@@ -76,7 +78,7 @@ public class Config {
         try (FileWriter writer = new FileWriter(FabricLoader.getInstance().getConfigDir().resolve(FILENAME).toFile())) {
             GSON.toJson(this, writer);
         } catch (Exception e) {
-            ModUtils.LOGGER.error("Save config error", e);
+            LOGGER.error("Save config error", e);
         }
     }
 

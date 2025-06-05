@@ -7,7 +7,7 @@ import net.minecraft.util.Formatting;
 import java.util.ArrayList;
 import java.util.List;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 import static despairscent.skyblockm.tweaks.ModUtils.getLiteralNested;
 
 public class CompactGenomeModule {
@@ -29,7 +29,7 @@ public class CompactGenomeModule {
 
     public static void init() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            if (!config.modules.compactGenome) {
+            if (!CONFIG.modules.compactGenome) {
                 return;
             }
 

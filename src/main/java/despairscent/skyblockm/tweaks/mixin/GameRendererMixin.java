@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.function.Predicate;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 
 @Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
@@ -22,7 +22,7 @@ public abstract class GameRendererMixin {
     @Redirect(method = "updateTargetedEntity(F)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/ProjectileUtil;raycast(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Box;Ljava/util/function/Predicate;D)Lnet/minecraft/util/hit/EntityHitResult;"))
     private EntityHitResult updateTargetedEntityRaycastRedirect(Entity entity, Vec3d min, Vec3d max, Box box, Predicate<Entity> predicate, double d) {
-        if (config.modules.storageTargetingFix) {
+        if (CONFIG.modules.storageTargetingFix) {
             return ProjectileUtil.raycast(entity, min, max, box, e ->
                     !(e instanceof ItemFrameEntity itemFrame &&
                             itemFrame.getHorizontalFacing() == Direction.DOWN && itemFrame.isInvisible() &&

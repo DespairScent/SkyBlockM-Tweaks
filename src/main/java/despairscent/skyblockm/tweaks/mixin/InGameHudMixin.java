@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
@@ -33,25 +33,25 @@ public class InGameHudMixin {
 
     @Unique
     private static Text getExtendedName(ItemStack itemStack) {
-        if (!config.modules.moreTooltipInfo) {
+        if (!CONFIG.modules.moreTooltipInfo) {
             return itemStack.getName();
         }
 
         int modelId = ModUtils.getCustomModelId(itemStack);
         if (itemStack.getItem() == Items.BARRIER && modelId >= 1010 && modelId <= 1013) { // storage
-            if (!config.moreTooltipInfo.storage) {
+            if (!CONFIG.moreTooltipInfo.storage) {
                 return itemStack.getName();
             }
 
             return getExtendedNameForStorage(itemStack);
         } else if (itemStack.getItem() == Items.BARRIER && modelId >= 1020 && modelId <= 1023) { // fluid storage
-            if (!config.moreTooltipInfo.fluidStorage) {
+            if (!CONFIG.moreTooltipInfo.fluidStorage) {
                 return itemStack.getName();
             }
 
             return getExtendedNameForStorage(itemStack);
         } else if (itemStack.getItem() == Items.IRON_HORSE_ARMOR && modelId == 2001) { // memory crystal
-            if (!config.moreTooltipInfo.crystalMemory) {
+            if (!CONFIG.moreTooltipInfo.crystalMemory) {
                 return itemStack.getName();
             }
 
