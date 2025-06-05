@@ -49,8 +49,10 @@
   "skyblockm-tweaks.config.esTerminalScroll.keyUp": "Клавиша прокрутки вверх",
   "skyblockm-tweaks.config.esTerminalScroll.keyDown": "Клавиша прокрутки вниз",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitWheel": "Лимит срабатывания прокрутки [Колесо мыши]",
+  "skyblockm-tweaks.config.esTerminalScroll.actionLimitWheel.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey": "Лимит срабатывания прокрутки [Клавиши]",
-  "skyblockm-tweaks.config.esTerminalScroll.actionLimit.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
+  "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey.tooltip": "Перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама",
+
 
 
   "skyblockm-tweaks.config.compactGenome": "Компактный показ генов пчел",
