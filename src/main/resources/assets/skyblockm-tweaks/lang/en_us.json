@@ -11,6 +11,7 @@
   "skyblockm-tweaks.config.modules.renderItemInside": "Рендер внутреннего предмета",
   "skyblockm-tweaks.config.modules.renderItemInside.tooltip": "Например, показ цели ES шаблона при зажатом Shift (по умолчанию)",
   "skyblockm-tweaks.config.modules.inputLagFix": "Исправление лагов ввода текста в кастомных интерфейсах",
+  "skyblockm-tweaks.config.modules.esTerminalScroll": "Прокрутка в ES терминале",
   "skyblockm-tweaks.config.modules.compactGenome": "Компактный показ генов пчел",
   "skyblockm-tweaks.config.modules.compactGenome.tooltip": "Только для опытных пчеловодов, большая часть подробностей будет скрыта",
   "skyblockm-tweaks.config.modules.hideHiddenArmorStands": "Скрытие невидимых стоек для брони",
@@ -36,6 +37,14 @@
 
   "skyblockm-tweaks.config.inputLagFix.recipesSearch": "При поиске по рецептам",
   "skyblockm-tweaks.config.inputLagFix.esTerminalSearch": "При поиске в ES-терминале",
+
+  "skyblockm-tweaks.config.esTerminalScroll.wheel": "Прокрутка колесом мыши",
+  "skyblockm-tweaks.config.esTerminalScroll.wheelModifier": "Клавиша для удержания с колесом мыши",
+  "skyblockm-tweaks.config.esTerminalScroll.keyUp": "Клавиша прокрутки вверх",
+  "skyblockm-tweaks.config.esTerminalScroll.keyDown": "Клавиша прокрутки вниз",
+  "skyblockm-tweaks.config.esTerminalScroll.actionLimitWheel": "Лимит срабатывания прокрутки [Колесо мыши]",
+  "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey": "Лимит срабатывания прокрутки [Клавиши]",
+  "skyblockm-tweaks.config.esTerminalScroll.actionLimit.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
 
   "modmenu.summaryTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM",
   "modmenu.descriptionTranslation.skyblockm-tweaks": "Улучшает игровой опыт на сервере SkyBlockM посредством различных оптимизаций и QoL-фич\nДля настройки необходим Cloth Config API"

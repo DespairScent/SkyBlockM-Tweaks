@@ -9,7 +9,8 @@
     "EntityMixin",
     "GameRendererMixin",
     "InGameHudMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "MouseMixin"
   ],
   "injectors": {
     "defaultRequire": 1
