@@ -148,8 +148,6 @@ public class Config {
                 config.esTerminalScroll.enabled = config.modules.esTerminalScroll;
                 config.compactGenome.enabled = config.modules.compactGenome;
                 config.hideHiddenArmorStands.enabled = config.modules.hideHiddenArmorStands;
-
-                config.save();
             }
 
             return config;
