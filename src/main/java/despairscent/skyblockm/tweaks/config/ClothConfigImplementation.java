@@ -107,10 +107,12 @@ public class ClothConfigImplementation {
                         .setKeySaveConsumer(value -> CONFIG.esTerminalScroll.keyDown = value.getCode())
                         .build(),
                 builder.entryBuilder().startIntField(i18n("config.esTerminalScroll.actionLimitWheel"), CONFIG.esTerminalScroll.actionLimitWheel)
+                        .setTooltip(i18n("config.esTerminalScroll.actionLimitWheel.tooltip"))
                         .setDefaultValue(Config.DEFAULT.esTerminalScroll.actionLimitWheel)
                         .setSaveConsumer(value -> CONFIG.esTerminalScroll.actionLimitWheel = value)
                         .build(),
                 builder.entryBuilder().startIntField(i18n("config.esTerminalScroll.actionLimitKey"), CONFIG.esTerminalScroll.actionLimitKey)
+                        .setTooltip(i18n("config.esTerminalScroll.actionLimitKey.tooltip"))
                         .setDefaultValue(Config.DEFAULT.esTerminalScroll.actionLimitKey)
                         .setSaveConsumer(value -> CONFIG.esTerminalScroll.actionLimitKey = value)
                         .build()
