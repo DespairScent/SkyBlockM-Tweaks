@@ -29,7 +29,7 @@ public class CompactGenomeModule {
 
     public static void init() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            if (!CONFIG.modules.compactGenome) {
+            if (!CONFIG.compactGenome.enabled) {
                 return;
             }
 

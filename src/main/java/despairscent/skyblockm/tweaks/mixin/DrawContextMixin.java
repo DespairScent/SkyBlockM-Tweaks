@@ -41,7 +41,7 @@ public class DrawContextMixin {
     @Inject(method = "drawItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;IIII)V",
             at = @At("HEAD"))
     private void drawItemInjectHead(LivingEntity entity, World world, ItemStack itemStack, int x, int y, int seed, int z, CallbackInfo ci) {
-        if (!CONFIG.modules.renderItemInside || !itemStack.hasNbt()) {
+        if (!CONFIG.renderItemInside.enabled || !itemStack.hasNbt()) {
             return;
         }
 
@@ -81,7 +81,7 @@ public class DrawContextMixin {
     @Inject(method = "drawItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;IIII)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V"))
     private void drawItemInject(LivingEntity entity, World world, ItemStack itemStack, int x, int y, int seed, int z, CallbackInfo ci) {
-        if (!CONFIG.modules.renderItemInside || !itemStack.hasNbt()) {
+        if (!CONFIG.renderItemInside.enabled || !itemStack.hasNbt()) {
             return;
         }
 
