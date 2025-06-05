@@ -18,7 +18,7 @@ public class EsTerminalScroll {
 
     public static void init() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (CONFIG.modules.esTerminalScroll) {
+            if (CONFIG.esTerminalScroll.enabled) {
                 if (CONFIG.esTerminalScroll.keyUp != Config.KEY_UNDEFINED &&
                         InputUtil.isKeyPressed(CLIENT.getWindow().getHandle(), CONFIG.esTerminalScroll.keyUp)) {
                     doScrollUp(false);

@@ -33,7 +33,7 @@ public class InGameHudMixin {
 
     @Unique
     private static Text getExtendedName(ItemStack itemStack) {
-        if (!CONFIG.modules.moreTooltipInfo) {
+        if (!CONFIG.moreTooltipInfo.enabled) {
             return itemStack.getName();
         }
 

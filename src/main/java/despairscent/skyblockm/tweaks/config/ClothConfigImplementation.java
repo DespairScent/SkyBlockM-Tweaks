@@ -19,21 +19,23 @@ public class ClothConfigImplementation {
     static Screen generate(Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(i18n("config.title"));
+                .setTitle(i18n("config.base.title"));
         ConfigCategory base = builder.getOrCreateCategory(Text.empty());
+        
+        Text moduleSetupText = i18n("config.base.moduleSetup");
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.storageTargetingFix"), CONFIG.modules.storageTargetingFix)
-                .setTooltip(i18n("config.modules.storageTargetingFix.tooltip"))
-                .setDefaultValue(Config.DEFAULT.modules.storageTargetingFix)
-                .setSaveConsumer(value -> CONFIG.modules.storageTargetingFix = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.storageTargetingFix"), CONFIG.storageTargetingFix.enabled)
+                .setTooltip(i18n("config.storageTargetingFix.tooltip"))
+                .setDefaultValue(Config.DEFAULT.storageTargetingFix.enabled)
+                .setSaveConsumer(value -> CONFIG.storageTargetingFix.enabled = value)
                 .build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.moreTooltipInfo"), CONFIG.modules.moreTooltipInfo)
-                .setTooltip(i18n("config.modules.moreTooltipInfo.tooltip"))
-                .setDefaultValue(Config.DEFAULT.modules.moreTooltipInfo)
-                .setSaveConsumer(value -> CONFIG.modules.moreTooltipInfo = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.moreTooltipInfo"), CONFIG.moreTooltipInfo.enabled)
+                .setTooltip(i18n("config.moreTooltipInfo.tooltip"))
+                .setDefaultValue(Config.DEFAULT.moreTooltipInfo.enabled)
+                .setSaveConsumer(value -> CONFIG.moreTooltipInfo.enabled = value)
                 .build());
-        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
+        base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
                 builder.entryBuilder().startBooleanToggle(i18n("config.moreTooltipInfo.storage"), CONFIG.moreTooltipInfo.storage)
                         .setTooltip(i18n("config.moreTooltipInfo.storage.tooltip"))
                         .setDefaultValue(Config.DEFAULT.moreTooltipInfo.storage)
@@ -51,12 +53,12 @@ public class ClothConfigImplementation {
                         .build()
         )).build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.renderItemInside"), CONFIG.modules.renderItemInside)
-                .setTooltip(i18n("config.modules.renderItemInside.tooltip"))
-                .setDefaultValue(Config.DEFAULT.modules.renderItemInside)
-                .setSaveConsumer(value -> CONFIG.modules.renderItemInside = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside"), CONFIG.renderItemInside.enabled)
+                .setTooltip(i18n("config.renderItemInside.tooltip"))
+                .setDefaultValue(Config.DEFAULT.renderItemInside.enabled)
+                .setSaveConsumer(value -> CONFIG.renderItemInside.enabled = value)
                 .build());
-        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
+        base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
                 builder.entryBuilder().startSubCategory(i18n("config.renderItemInside.item.esPattern"),
                         prepareRenderItemInsideSetup(builder, config -> config.renderItemInside.esPattern)).build(),
                 builder.entryBuilder().startSubCategory(i18n("config.renderItemInside.item.storage"),
@@ -65,26 +67,26 @@ public class ClothConfigImplementation {
                         prepareRenderItemInsideSetup(builder, config -> config.renderItemInside.crystalMemory)).build()
         )).build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.inputLagFix"), CONFIG.modules.inputLagFix)
-                .setDefaultValue(Config.DEFAULT.modules.inputLagFix)
-                .setSaveConsumer(value -> CONFIG.modules.inputLagFix = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.textInputLagFix"), CONFIG.textInputLagFix.enabled)
+                .setDefaultValue(Config.DEFAULT.textInputLagFix.enabled)
+                .setSaveConsumer(value -> CONFIG.textInputLagFix.enabled = value)
                 .build());
-        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
-                builder.entryBuilder().startBooleanToggle(i18n("config.inputLagFix.recipesSearch"), CONFIG.inputLagFix.recipesSearch)
-                        .setDefaultValue(Config.DEFAULT.inputLagFix.recipesSearch)
-                        .setSaveConsumer(value -> CONFIG.inputLagFix.recipesSearch = value)
+        base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
+                builder.entryBuilder().startBooleanToggle(i18n("config.textInputLagFix.recipesSearch"), CONFIG.textInputLagFix.recipesSearch)
+                        .setDefaultValue(Config.DEFAULT.textInputLagFix.recipesSearch)
+                        .setSaveConsumer(value -> CONFIG.textInputLagFix.recipesSearch = value)
                         .build(),
-                builder.entryBuilder().startBooleanToggle(i18n("config.inputLagFix.esTerminalSearch"), CONFIG.inputLagFix.esTerminalSearch)
-                        .setDefaultValue(Config.DEFAULT.inputLagFix.esTerminalSearch)
-                        .setSaveConsumer(value -> CONFIG.inputLagFix.esTerminalSearch = value)
+                builder.entryBuilder().startBooleanToggle(i18n("config.textInputLagFix.esTerminalSearch"), CONFIG.textInputLagFix.esTerminalSearch)
+                        .setDefaultValue(Config.DEFAULT.textInputLagFix.esTerminalSearch)
+                        .setSaveConsumer(value -> CONFIG.textInputLagFix.esTerminalSearch = value)
                         .build()
         )).build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.esTerminalScroll"), CONFIG.modules.esTerminalScroll)
-                .setDefaultValue(Config.DEFAULT.modules.esTerminalScroll)
-                .setSaveConsumer(value -> CONFIG.modules.esTerminalScroll = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.esTerminalScroll"), CONFIG.esTerminalScroll.enabled)
+                .setDefaultValue(Config.DEFAULT.esTerminalScroll.enabled)
+                .setSaveConsumer(value -> CONFIG.esTerminalScroll.enabled = value)
                 .build());
-        base.addEntry(builder.entryBuilder().startSubCategory(i18n("config.subcategory"), Arrays.asList(
+        base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
                 builder.entryBuilder().startBooleanToggle(i18n("config.esTerminalScroll.wheel"), CONFIG.esTerminalScroll.wheel)
                         .setDefaultValue(Config.DEFAULT.esTerminalScroll.wheel)
                         .setSaveConsumer(value -> CONFIG.esTerminalScroll.wheel = value)
@@ -114,16 +116,16 @@ public class ClothConfigImplementation {
                         .build()
         )).build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.compactGenome"), CONFIG.modules.compactGenome)
-                .setTooltip(i18n("config.modules.compactGenome.tooltip"))
-                .setDefaultValue(Config.DEFAULT.modules.compactGenome)
-                .setSaveConsumer(value -> CONFIG.modules.compactGenome = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.compactGenome"), CONFIG.compactGenome.enabled)
+                .setTooltip(i18n("config.compactGenome.tooltip"))
+                .setDefaultValue(Config.DEFAULT.compactGenome.enabled)
+                .setSaveConsumer(value -> CONFIG.compactGenome.enabled = value)
                 .build());
 
-        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.modules.hideHiddenArmorStands"), CONFIG.modules.hideHiddenArmorStands)
-                .setTooltip(i18n("config.modules.hideHiddenArmorStands.tooltip"))
-                .setDefaultValue(Config.DEFAULT.modules.hideHiddenArmorStands)
-                .setSaveConsumer(value -> CONFIG.modules.hideHiddenArmorStands = value)
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.hideHiddenArmorStands"), CONFIG.hideHiddenArmorStands.enabled)
+                .setTooltip(i18n("config.hideHiddenArmorStands.tooltip"))
+                .setDefaultValue(Config.DEFAULT.hideHiddenArmorStands.enabled)
+                .setSaveConsumer(value -> CONFIG.hideHiddenArmorStands.enabled = value)
                 .build());
 
         builder.setSavingRunnable(() -> CONFIG.save());
@@ -133,19 +135,19 @@ public class ClothConfigImplementation {
 
     private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideSub> subGetter) {
         return Arrays.asList(
-                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.enabled"), subGetter.apply(CONFIG).enabled)
+                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.itemSetup.enabled"), subGetter.apply(CONFIG).enabled)
                         .setDefaultValue(subGetter.apply(Config.DEFAULT).enabled)
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).enabled = value)
                         .build(),
-                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.renderAlways"), subGetter.apply(CONFIG).renderAlways)
+                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.itemSetup.renderAlways"), subGetter.apply(CONFIG).renderAlways)
                         .setDefaultValue(subGetter.apply(Config.DEFAULT).renderAlways)
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).renderAlways = value)
                         .build(),
-                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.drawOriginal"), subGetter.apply(CONFIG).drawOriginal)
+                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.itemSetup.drawOriginal"), subGetter.apply(CONFIG).drawOriginal)
                         .setDefaultValue(subGetter.apply(Config.DEFAULT).drawOriginal)
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).drawOriginal = value)
                         .build(),
-                builder.entryBuilder().startAlphaColorField(i18n("config.renderItemInside.bgColor"), subGetter.apply(CONFIG).bgColor)
+                builder.entryBuilder().startAlphaColorField(i18n("config.renderItemInside.itemSetup.bgColor"), subGetter.apply(CONFIG).bgColor)
                         .setDefaultValue(subGetter.apply(Config.DEFAULT).bgColor)
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).bgColor = value)
                         .build()
