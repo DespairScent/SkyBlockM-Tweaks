@@ -14,7 +14,6 @@
   "skyblockm-tweaks.config.moreTooltipInfo": "Подробности во всплывающей подсказке предмета",
   "skyblockm-tweaks.config.moreTooltipInfo.tooltip": "Всплывающая подсказка - та, что появляется при смене слота в хотбара",
 
-
   "skyblockm-tweaks.config.moreTooltipInfo.storage": "Хранилище",
   "skyblockm-tweaks.config.moreTooltipInfo.storage.tooltip": "Показ предмета внутри",
   "skyblockm-tweaks.config.moreTooltipInfo.fluidStorage": "Жидкостное хранилище",
@@ -52,7 +51,6 @@
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitWheel.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey": "Лимит срабатывания прокрутки [Клавиши]",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey.tooltip": "Перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама",
-
 
 
   "skyblockm-tweaks.config.compactGenome": "Компактный показ генов пчел",
