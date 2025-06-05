@@ -40,15 +40,15 @@ public abstract class AnvilScreenMixin implements IAnvilScreenMixin {
     @Inject(method = "setup",
             at = @At("TAIL"))
     private void setupInject(CallbackInfo ci) {
-        if (!CONFIG.modules.inputLagFix) {
+        if (!CONFIG.textInputLagFix.enabled) {
             return;
         }
         if (testCustomScreen((AnvilScreen) (Object) this, "recipeviewer:interfaces", "\u0002")) {
-            if (CONFIG.inputLagFix.recipesSearch) {
+            if (CONFIG.textInputLagFix.recipesSearch) {
                 this.fixInputLag = true;
             }
         } else if (testCustomScreen((AnvilScreen) (Object) this, "electric_storage:interfaces", "\u1010")) {
-            if (CONFIG.inputLagFix.esTerminalSearch) {
+            if (CONFIG.textInputLagFix.esTerminalSearch) {
                 this.fixInputLag = true;
                 this.fixInputLagScreenChainMode = true;
             }
