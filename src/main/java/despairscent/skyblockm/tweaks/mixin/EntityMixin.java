@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
@@ -18,7 +18,7 @@ public abstract class EntityMixin {
 	@Redirect(method = "isInvisibleTo",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;isSpectator()Z"))
 	private boolean redirectSpectatorCheck(PlayerEntity instance) {
-		if (config.modules.hideHiddenArmorStands && this.getType() == EntityType.ARMOR_STAND) {
+		if (CONFIG.modules.hideHiddenArmorStands && this.getType() == EntityType.ARMOR_STAND) {
 			return false;
 		}
 		return instance.isSpectator();
