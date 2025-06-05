@@ -28,7 +28,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CLIENT;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 
 @Mixin(DrawContext.class)
 public class DrawContextMixin {
@@ -40,7 +41,7 @@ public class DrawContextMixin {
     @Inject(method = "drawItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;IIII)V",
             at = @At("HEAD"))
     private void drawItemInjectHead(LivingEntity entity, World world, ItemStack itemStack, int x, int y, int seed, int z, CallbackInfo ci) {
-        if (!config.modules.renderItemInside || !itemStack.hasNbt()) {
+        if (!CONFIG.modules.renderItemInside || !itemStack.hasNbt()) {
             return;
         }
 
@@ -49,22 +50,22 @@ public class DrawContextMixin {
         int bgColor;
         if (itemStack.getItem() == Items.PAPER && modelId == 7301) {
             if (!itemStack.getNbt().contains("ElectricStorage.RecipeResults") ||
-                    !testRender(config.renderItemInside.esPattern)) {
+                    !testRender(CONFIG.renderItemInside.esPattern)) {
                 return;
             }
-            bgColor = config.renderItemInside.esPattern.bgColor;
+            bgColor = CONFIG.renderItemInside.esPattern.bgColor;
         } else if (itemStack.getItem() == Items.BARRIER && modelId >= 1010 && modelId <= 1013) {
             if (!itemStack.getNbt().contains("ItemStack") ||
-                    !testRender(config.renderItemInside.storage)) {
+                    !testRender(CONFIG.renderItemInside.storage)) {
                 return;
             }
-            bgColor = config.renderItemInside.storage.bgColor;
+            bgColor = CONFIG.renderItemInside.storage.bgColor;
         } else if (itemStack.getItem() == Items.IRON_HORSE_ARMOR && modelId == 2001) {
             if (!itemStack.getNbt().contains("StoredItem") ||
-                    !testRender(config.renderItemInside.crystalMemory)) {
+                    !testRender(CONFIG.renderItemInside.crystalMemory)) {
                 return;
             }
-            bgColor = config.renderItemInside.crystalMemory.bgColor;
+            bgColor = CONFIG.renderItemInside.crystalMemory.bgColor;
         } else {
             return;
         }
@@ -80,7 +81,7 @@ public class DrawContextMixin {
     @Inject(method = "drawItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;IIII)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/item/ItemRenderer;renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V"))
     private void drawItemInject(LivingEntity entity, World world, ItemStack itemStack, int x, int y, int seed, int z, CallbackInfo ci) {
-        if (!config.modules.renderItemInside || !itemStack.hasNbt()) {
+        if (!CONFIG.modules.renderItemInside || !itemStack.hasNbt()) {
             return;
         }
 
@@ -90,25 +91,25 @@ public class DrawContextMixin {
         boolean drawOriginal;
         if (itemStack.getItem() == Items.PAPER && modelId == 7301) {
             if (!itemStack.getNbt().contains("ElectricStorage.RecipeResults") ||
-                    !testRender(config.renderItemInside.esPattern)) {
+                    !testRender(CONFIG.renderItemInside.esPattern)) {
                 return;
             }
-            drawOriginal = config.renderItemInside.esPattern.drawOriginal;
+            drawOriginal = CONFIG.renderItemInside.esPattern.drawOriginal;
             itemInside = ItemStack.fromNbt(
                     itemStack.getNbt().getList("ElectricStorage.RecipeResults", NbtElement.COMPOUND_TYPE)
                             .getCompound(0));
         } else if (itemStack.getItem() == Items.BARRIER && modelId >= 1010 && modelId <= 1013) {
             if (!itemStack.getNbt().contains("ItemStack") ||
-                    !testRender(config.renderItemInside.storage)) {
+                    !testRender(CONFIG.renderItemInside.storage)) {
                 return;
             }
-            drawOriginal = config.renderItemInside.storage.drawOriginal;
+            drawOriginal = CONFIG.renderItemInside.storage.drawOriginal;
             itemInside = ItemStack.fromNbt(itemStack.getNbt().getCompound("ItemStack"));
         } else if (itemStack.getItem() == Items.IRON_HORSE_ARMOR && modelId == 2001) {
-            if (!testRender(config.renderItemInside.crystalMemory)) {
+            if (!testRender(CONFIG.renderItemInside.crystalMemory)) {
                 return;
             }
-            drawOriginal = config.renderItemInside.crystalMemory.drawOriginal;
+            drawOriginal = CONFIG.renderItemInside.crystalMemory.drawOriginal;
             itemInside = itemStackFromCrystalMemory(itemStack.getNbt());
             if (itemInside == null) {
                 return;
@@ -144,9 +145,7 @@ public class DrawContextMixin {
 
     @Unique
     private static boolean testRender(Config.RenderItemInsideSub subConfig) {
-        return subConfig.enabled &&
-                (subConfig.renderAlways ||
-                        (MinecraftClient.getInstance().currentScreen != null && Screen.hasShiftDown()));
+        return subConfig.enabled && (subConfig.renderAlways || (CLIENT.currentScreen != null && Screen.hasShiftDown()));
     }
 
     @Unique

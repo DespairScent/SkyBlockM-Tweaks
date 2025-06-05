@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static despairscent.skyblockm.tweaks.ModUtils.config;
+import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 import static despairscent.skyblockm.tweaks.ModUtils.testCustomScreen;
 
 @Mixin(AnvilScreen.class)
@@ -40,15 +40,15 @@ public abstract class AnvilScreenMixin implements IAnvilScreenMixin {
     @Inject(method = "setup",
             at = @At("TAIL"))
     private void setupInject(CallbackInfo ci) {
-        if (!config.modules.inputLagFix) {
+        if (!CONFIG.modules.inputLagFix) {
             return;
         }
         if (testCustomScreen((AnvilScreen) (Object) this, "recipeviewer:interfaces", "\u0002")) {
-            if (config.inputLagFix.recipesSearch) {
+            if (CONFIG.inputLagFix.recipesSearch) {
                 this.fixInputLag = true;
             }
         } else if (testCustomScreen((AnvilScreen) (Object) this, "electric_storage:interfaces", "\u1010")) {
-            if (config.inputLagFix.esTerminalSearch) {
+            if (CONFIG.inputLagFix.esTerminalSearch) {
                 this.fixInputLag = true;
                 this.fixInputLagScreenChainMode = true;
             }
