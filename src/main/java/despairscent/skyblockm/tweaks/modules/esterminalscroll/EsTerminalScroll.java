@@ -33,29 +33,40 @@ public class EsTerminalScroll {
     }
 
     public static boolean doScrollDown(boolean wheel) {
-        return sendClick(35, wheel);
+        return sendClick(false, wheel);
     }
 
     public static boolean doScrollUp(boolean wheel) {
-        return sendClick(8, wheel);
+        return sendClick(true, wheel);
     }
 
-    private static boolean sendClick(int slot, boolean wheel) {
-        if (CLIENT.currentScreen instanceof HandledScreen<?> screen && ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1000")) {
-            if (lastClickAt != tick) {
-                clickedPerTick = 0;
-            }
-            int limit = wheel ? CONFIG.esTerminalScroll.actionLimitWheel : CONFIG.esTerminalScroll.actionLimitKey;
-            if (limit > 0 ?
-                    tick - lastClickAt > limit :
-                    clickedPerTick < Math.max(1, -limit)) {
-                CLIENT.interactionManager.clickSlot(screen.getScreenHandler().syncId, slot, 0, SlotActionType.PICKUP, CLIENT.player);
-                lastClickAt = tick;
-                ++clickedPerTick;
-            }
-            return true;
+    private static boolean sendClick(boolean up, boolean wheel) {
+        if (!(CLIENT.currentScreen instanceof HandledScreen<?> screen)) {
+            return false;
         }
-        return false;
+
+        int slot;
+        if (ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1000")) {
+            slot = up ? 8 : 35;
+        } else if (ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1010")) {
+            slot = up ? 11 : 38;
+        } else {
+            return false;
+        }
+
+        if (lastClickAt != tick) {
+            clickedPerTick = 0;
+        }
+        int limit = wheel ? CONFIG.esTerminalScroll.actionLimitWheel : CONFIG.esTerminalScroll.actionLimitKey;
+        if (limit > 0 ?
+                tick - lastClickAt > limit :
+                clickedPerTick < Math.max(1, -limit)) {
+            CLIENT.interactionManager.clickSlot(screen.getScreenHandler().syncId, slot, 0, SlotActionType.PICKUP, CLIENT.player);
+            lastClickAt = tick;
+            ++clickedPerTick;
+        }
+
+        return true;
     }
 
 }
