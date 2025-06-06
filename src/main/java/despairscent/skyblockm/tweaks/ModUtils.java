@@ -30,7 +30,7 @@ public class ModUtils {
         return Text.translatable("skyblockm-tweaks." + key, args);
     }
 
-    public static boolean testCustomScreen(Screen screen, String namespace, String code) {
+    public static boolean testCustomScreen(Screen screen, String namespace, String... codes) {
         if (screen == null) {
             return false;
         }
@@ -39,9 +39,15 @@ public class ModUtils {
             return false;
         }
         Text child = siblings.get(0);
-        return child.getContent() instanceof PlainTextContent plainText &&
-                child.getStyle().getFont().toString().equals(namespace) &&
-                plainText.string().equals(code);
+        if (child.getContent() instanceof PlainTextContent plainText && child.getStyle().getFont().toString().equals(namespace)) {
+            String codeScreen = plainText.string();
+            for (String code : codes) {
+                if (codeScreen.equals(code)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static int getCustomModelId(ItemStack itemStack) {
