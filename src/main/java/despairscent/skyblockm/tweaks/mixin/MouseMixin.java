@@ -1,10 +1,8 @@
 package despairscent.skyblockm.tweaks.mixin;
 
 import despairscent.skyblockm.tweaks.ModUtils;
-import despairscent.skyblockm.tweaks.config.Config;
 import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScroll;
 import net.minecraft.client.Mouse;
-import net.minecraft.client.util.InputUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
