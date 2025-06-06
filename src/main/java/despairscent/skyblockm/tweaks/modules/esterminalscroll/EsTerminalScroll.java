@@ -3,6 +3,7 @@ package despairscent.skyblockm.tweaks.modules.esterminalscroll;
 import despairscent.skyblockm.tweaks.ModUtils;
 import despairscent.skyblockm.tweaks.config.Config;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.screen.slot.SlotActionType;
@@ -59,7 +60,8 @@ public class EsTerminalScroll {
         if (limit > 0 ?
                 tick - lastClickAt > limit :
                 clickedPerTick < Math.max(1, -limit)) {
-            CLIENT.interactionManager.clickSlot(screen.getScreenHandler().syncId, slot, 0, SlotActionType.PICKUP, CLIENT.player);
+            boolean boost = ModUtils.isKeyPressed(CONFIG.esTerminalScroll.boostKey) ^ (CONFIG.esTerminalScroll.boostKeyType == Config.EsTerminalScrollBoostKeyType.DEACTIVATE);
+            CLIENT.interactionManager.clickSlot(screen.getScreenHandler().syncId, slot, 0, boost ? SlotActionType.QUICK_MOVE : SlotActionType.PICKUP, CLIENT.player);
             lastClickAt = tick;
             ++clickedPerTick;
         }

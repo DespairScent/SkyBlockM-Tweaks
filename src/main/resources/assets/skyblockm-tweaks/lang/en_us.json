@@ -51,6 +51,12 @@
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitWheel.tooltip": "Если больше 0: перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама\nЕсли меньше 0: лимит на кол-во срабатываний за тик (0 действует как -1)",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey": "Лимит срабатывания прокрутки [Клавиши]",
   "skyblockm-tweaks.config.esTerminalScroll.actionLimitKey.tooltip": "Перерыв между действиями прокрутки в тиках, необходимо для предотвращения спама",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKey": "Клавиша для удержания к двойной прокрутке",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKey.tooltip": "Двойная прокрутка работает так, как если кликать в интерфейсе вручную с зажатым Shift",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKeyType": "Режим работы клавиши двойной прокрутки",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKeyType.tooltip": "Если выбрано \"Отключение\" - двойная прокрутка будет активна всегда, пока не нажата заданная клавиша",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKeyType.activate": "Активация",
+  "skyblockm-tweaks.config.esTerminalScroll.boostKeyType.deactivate": "Отключение",
 
 
   "skyblockm-tweaks.config.compactGenome": "Компактный показ генов пчел",
