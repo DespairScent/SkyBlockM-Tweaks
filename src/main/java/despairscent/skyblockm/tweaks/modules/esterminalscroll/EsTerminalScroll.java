@@ -43,7 +43,9 @@ public class EsTerminalScroll {
         }
 
         int slot;
-        if (ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1000")) {
+        if (ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1000") ||
+                ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1030") ||
+                ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u2000")) {
             slot = up ? 8 : 35;
         } else if (ModUtils.testCustomScreen(screen, "electric_storage:interfaces", "\u1010")) {
             slot = up ? 11 : 38;
