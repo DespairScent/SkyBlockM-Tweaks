@@ -7,9 +7,9 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 import static despairscent.skyblockm.tweaks.ModUtils.i18n;
@@ -60,7 +60,12 @@ public class ClothConfigImplementation {
                 .build());
         base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
                 builder.entryBuilder().startSubCategory(i18n("config.renderItemInside.item.esPattern"),
-                        prepareRenderItemInsideSetup(builder, config -> config.renderItemInside.esPattern)).build(),
+                        prepareRenderItemInsideSetup(builder, config -> config.renderItemInside.esPattern,
+                                builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.itemSetupEsPattern.forceRenderInsideInterface"), CONFIG.renderItemInside.esPattern.forceRenderInsideInterface)
+                                        .setDefaultValue(Config.DEFAULT.renderItemInside.esPattern.forceRenderInsideInterface)
+                                        .setSaveConsumer(value -> CONFIG.renderItemInside.esPattern.forceRenderInsideInterface = value)
+                                        .build()
+                        )).build(),
                 builder.entryBuilder().startSubCategory(i18n("config.renderItemInside.item.storage"),
                         prepareRenderItemInsideSetup(builder, config -> config.renderItemInside.storage)).build(),
                 builder.entryBuilder().startSubCategory(i18n("config.renderItemInside.item.crystalMemory"),
@@ -147,8 +152,12 @@ public class ClothConfigImplementation {
         return builder.build();
     }
 
-    private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideSub> subGetter) {
-        return Arrays.asList(
+    // private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideItemSetup> subGetter) {
+    //     return prepareRenderItemInsideSetup(builder, subGetter, Collections.emptyList());
+    // }
+
+    private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideItemSetup> subGetter, AbstractConfigListEntry... additional) {
+        List<AbstractConfigListEntry> list = Arrays.asList(
                 builder.entryBuilder().startBooleanToggle(i18n("config.renderItemInside.itemSetup.enabled"), subGetter.apply(CONFIG).enabled)
                         .setDefaultValue(subGetter.apply(Config.DEFAULT).enabled)
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).enabled = value)
@@ -166,6 +175,11 @@ public class ClothConfigImplementation {
                         .setSaveConsumer(value -> subGetter.apply(CONFIG).bgColor = value)
                         .build()
         );
+        if (additional.length != 0) {
+            list = new ArrayList<>(list);
+            list.addAll(Arrays.asList(additional));
+        }
+        return list;
     }
 
 }

@@ -34,6 +34,8 @@
   "skyblockm-tweaks.config.renderItemInside.itemSetup.drawOriginal": "Иконка контейнера",
   "skyblockm-tweaks.config.renderItemInside.itemSetup.bgColor": "Цвет фона",
 
+  "skyblockm-tweaks.config.renderItemInside.itemSetupEsPattern.forceRenderInsideInterface": "Показывать всегда при открытом ES-интерфейсе",
+
 
   "skyblockm-tweaks.config.textInputLagFix": "Исправление лагов ввода текста в кастомных интерфейсах",
 
