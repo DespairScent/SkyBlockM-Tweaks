@@ -19,11 +19,9 @@ public class EsTerminalScroll {
     public static void init() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (CONFIG.esTerminalScroll.enabled) {
-                if (CONFIG.esTerminalScroll.keyUp != Config.KEY_UNDEFINED &&
-                        InputUtil.isKeyPressed(CLIENT.getWindow().getHandle(), CONFIG.esTerminalScroll.keyUp)) {
+                if (ModUtils.isKeyPressed(CONFIG.esTerminalScroll.keyUp)) {
                     doScrollUp(false);
-                } else if (CONFIG.esTerminalScroll.keyDown != Config.KEY_UNDEFINED &&
-                        InputUtil.isKeyPressed(CLIENT.getWindow().getHandle(), CONFIG.esTerminalScroll.keyDown)) {
+                } else if (ModUtils.isKeyPressed(CONFIG.esTerminalScroll.keyDown)) {
                     doScrollDown(false);
                 }
             }
