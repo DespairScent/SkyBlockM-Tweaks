@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import despairscent.skyblockm.tweaks.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.CustomModelDataComponent;
 import net.minecraft.item.ItemStack;
@@ -59,6 +60,14 @@ public class ModUtils {
             return content.string();
         }
         return null;
+    }
+
+    public static boolean isKeyPressed(int key) {
+        return key != Config.KEY_UNDEFINED && InputUtil.isKeyPressed(CLIENT.getWindow().getHandle(), key);
+    }
+
+    public static boolean isKeyPressedOrUndefined(int key) {
+        return key == Config.KEY_UNDEFINED || InputUtil.isKeyPressed(CLIENT.getWindow().getHandle(), key);
     }
 
     public static <K, V> Map<K, V> generateConvertMap(V[] values, Function<V, K> keyGetter) {
