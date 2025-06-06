@@ -6,11 +6,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.text.Text;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 
 import static despairscent.skyblockm.tweaks.ModUtils.LOGGER;
+import static despairscent.skyblockm.tweaks.ModUtils.i18n;
 
 public class Config {
 
@@ -125,6 +128,20 @@ public class Config {
         // public short keyUpModifiers = MODIFIER_UNDEFINED;
         public int actionLimitWheel = 0;
         public int actionLimitKey = 2;
+
+        public int boostKey = InputUtil.GLFW_KEY_LEFT_SHIFT;
+        public EsTerminalScrollBoostKeyType boostKeyType = EsTerminalScrollBoostKeyType.ACTIVATE;
+    }
+
+    public enum EsTerminalScrollBoostKeyType {
+        ACTIVATE(i18n("config.esTerminalScroll.boostKeyType.activate")),
+        DEACTIVATE(i18n("config.esTerminalScroll.boostKeyType.deactivate"));
+
+        public final Text optionName;
+
+        EsTerminalScrollBoostKeyType(Text optionName) {
+            this.optionName = optionName;
+        }
     }
 
     public static class CompactGenomeConfig {
