@@ -115,6 +115,18 @@ public class ClothConfigImplementation {
                         .setTooltip(i18n("config.esTerminalScroll.actionLimitKey.tooltip"))
                         .setDefaultValue(Config.DEFAULT.esTerminalScroll.actionLimitKey)
                         .setSaveConsumer(value -> CONFIG.esTerminalScroll.actionLimitKey = value)
+                        .build(),
+                builder.entryBuilder().startKeyCodeField(i18n("config.esTerminalScroll.boostKey"), InputUtil.Type.KEYSYM.createFromCode(CONFIG.esTerminalScroll.boostKey))
+                        .setTooltip(i18n("config.esTerminalScroll.boostKey.tooltip"))
+                        .setAllowModifiers(false)
+                        .setDefaultValue(InputUtil.Type.KEYSYM.createFromCode(Config.DEFAULT.esTerminalScroll.boostKey))
+                        .setKeySaveConsumer(value -> CONFIG.esTerminalScroll.boostKey = value.getCode())
+                        .build(),
+                builder.entryBuilder().startEnumSelector(i18n("config.esTerminalScroll.boostKeyType"), Config.EsTerminalScrollBoostKeyType.class, CONFIG.esTerminalScroll.boostKeyType)
+                        .setTooltip(i18n("config.esTerminalScroll.boostKeyType.tooltip"))
+                        .setEnumNameProvider(v -> ((Config.EsTerminalScrollBoostKeyType) v).optionName)
+                        .setDefaultValue(Config.DEFAULT.esTerminalScroll.boostKeyType)
+                        .setSaveConsumer(value -> CONFIG.esTerminalScroll.boostKeyType = value)
                         .build()
         )).build());
 
