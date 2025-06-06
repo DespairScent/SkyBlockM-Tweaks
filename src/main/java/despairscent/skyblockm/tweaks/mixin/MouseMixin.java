@@ -1,5 +1,6 @@
 package despairscent.skyblockm.tweaks.mixin;
 
+import despairscent.skyblockm.tweaks.ModUtils;
 import despairscent.skyblockm.tweaks.config.Config;
 import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScroll;
 import net.minecraft.client.Mouse;
@@ -26,7 +27,7 @@ public class MouseMixin {
         if (window != CLIENT.getWindow().getHandle() || !CLIENT.isOnThread()) {
             return;
         }
-        if (CONFIG.esTerminalScroll.wheelModifier != Config.KEY_UNDEFINED && !InputUtil.isKeyPressed(window, CONFIG.esTerminalScroll.wheelModifier)) {
+        if (!ModUtils.isKeyPressedOrUndefined(CONFIG.esTerminalScroll.wheelModifier)) {
             return;
         }
 
