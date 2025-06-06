@@ -23,9 +23,9 @@
 
 
   "skyblockm-tweaks.config.renderItemInside": "Рендер внутреннего предмета",
-  "skyblockm-tweaks.config.renderItemInside.tooltip": "Например, показ цели ES шаблона при зажатом Shift (по умолчанию)",
+  "skyblockm-tweaks.config.renderItemInside.tooltip": "Например, показ цели ES-шаблона при зажатом Shift (по умолчанию)",
 
-  "skyblockm-tweaks.config.renderItemInside.item.esPattern": "ES шаблон создания",
+  "skyblockm-tweaks.config.renderItemInside.item.esPattern": "ES-шаблон создания",
   "skyblockm-tweaks.config.renderItemInside.item.storage": "Хранилище",
   "skyblockm-tweaks.config.renderItemInside.item.crystalMemory": "Кристалл памяти",
 
@@ -41,7 +41,7 @@
   "skyblockm-tweaks.config.textInputLagFix.esTerminalSearch": "При поиске в ES-терминале",
 
 
-  "skyblockm-tweaks.config.esTerminalScroll": "Прокрутка в ES терминале",
+  "skyblockm-tweaks.config.esTerminalScroll": "Прокрутка в ES-терминале",
 
   "skyblockm-tweaks.config.esTerminalScroll.wheel": "Прокрутка колесом мыши",
   "skyblockm-tweaks.config.esTerminalScroll.wheelModifier": "Клавиша для удержания с колесом мыши",
