@@ -94,19 +94,27 @@ public class Config {
     public static class RenderItemInsideConfig {
         public boolean enabled = true;
 
-        public RenderItemInsideSub esPattern = new RenderItemInsideSub(0xFF9D9DFF);
-        public RenderItemInsideSub storage = new RenderItemInsideSub(0xFFAEA78B);
-        public RenderItemInsideSub crystalMemory = new RenderItemInsideSub(0xFF4A4A4A);
+        public RenderItemInsideItemSetupEsPattern esPattern = new RenderItemInsideItemSetupEsPattern(0xFF9D9DFF);
+        public RenderItemInsideItemSetup storage = new RenderItemInsideItemSetup(0xFFAEA78B);
+        public RenderItemInsideItemSetup crystalMemory = new RenderItemInsideItemSetup(0xFF4A4A4A);
     }
 
-    public static class RenderItemInsideSub {
+    public static class RenderItemInsideItemSetup {
         public boolean enabled = true;
         public boolean renderAlways = false;
         public boolean drawOriginal = true; // drawContainer
         public int bgColor;
 
-        RenderItemInsideSub(int bgColor) {
+        RenderItemInsideItemSetup(int bgColor) {
             this.bgColor = bgColor;
+        }
+    }
+
+    public static class RenderItemInsideItemSetupEsPattern extends RenderItemInsideItemSetup {
+        public boolean forceRenderInsideInterface = true;
+
+        RenderItemInsideItemSetupEsPattern(int bgColor) {
+            super(bgColor);
         }
     }
 

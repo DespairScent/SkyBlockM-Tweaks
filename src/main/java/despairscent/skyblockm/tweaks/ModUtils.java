@@ -30,6 +30,9 @@ public class ModUtils {
     }
 
     public static boolean testCustomScreen(Screen screen, String namespace, String code) {
+        if (screen == null) {
+            return false;
+        }
         List<Text> siblings = screen.getTitle().getSiblings();
         if (siblings.isEmpty()) {
             return false;
