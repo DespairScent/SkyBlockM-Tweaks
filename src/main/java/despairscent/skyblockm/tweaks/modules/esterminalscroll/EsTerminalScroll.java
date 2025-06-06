@@ -3,9 +3,7 @@ package despairscent.skyblockm.tweaks.modules.esterminalscroll;
 import despairscent.skyblockm.tweaks.ModUtils;
 import despairscent.skyblockm.tweaks.config.Config;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.screen.slot.SlotActionType;
 
 import static despairscent.skyblockm.tweaks.ModUtils.CLIENT;

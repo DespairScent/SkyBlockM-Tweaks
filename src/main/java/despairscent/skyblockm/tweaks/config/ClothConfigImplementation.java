@@ -7,9 +7,10 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 import static despairscent.skyblockm.tweaks.ModUtils.i18n;
