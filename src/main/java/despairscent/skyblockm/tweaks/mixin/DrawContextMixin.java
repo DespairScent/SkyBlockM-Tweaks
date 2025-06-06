@@ -1,5 +1,6 @@
 package despairscent.skyblockm.tweaks.mixin;
 
+import despairscent.skyblockm.tweaks.ModUtils;
 import despairscent.skyblockm.tweaks.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -154,8 +155,11 @@ public class DrawContextMixin {
     }
 
     @Unique
-    private static boolean testRender(Config.RenderItemInsideSub subConfig) {
-        return subConfig.enabled && (subConfig.renderAlways || (CLIENT.currentScreen != null && Screen.hasShiftDown()));
+    private static boolean testRender(Config.RenderItemInsideItemSetup itemSetup) {
+        return itemSetup.enabled && (itemSetup.renderAlways ||
+                (CLIENT.currentScreen != null && Screen.hasShiftDown()) ||
+                (itemSetup instanceof Config.RenderItemInsideItemSetupEsPattern itemSetupEsPattern &&
+                        itemSetupEsPattern.forceRenderInsideInterface && ModUtils.testCustomScreen(CLIENT.currentScreen, "electric_storage:interfaces", "\u0003")));
     }
 
     @Unique
