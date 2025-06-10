@@ -43,6 +43,13 @@
   "skyblockm-tweaks.config.textInputLagFix.esTerminalSearch": "При поиске в ES-терминале",
 
 
+  "skyblockm-tweaks.config.inventoryDesyncFix": "Исправление десинхронизации инвентаря",
+  "skyblockm-tweaks.config.inventoryDesyncFix.tooltip": "Десинхронизация случается после открытия поиска по рецептам, она влечет за собой сброс текущего слота хотбара и отложенный показ обновлений инвентаря",
+
+  "skyblockm-tweaks.config.inventoryDesyncFix.inventoryUpdates": "Для обновлений инвентаря",
+  "skyblockm-tweaks.config.inventoryDesyncFix.selectedSlot": "Для текущего слота хотбара",
+
+
   "skyblockm-tweaks.config.esTerminalScroll": "Прокрутка в ES-терминале",
 
   "skyblockm-tweaks.config.esTerminalScroll.wheel": "Прокрутка колесом мыши",

@@ -6,6 +6,7 @@
   "mixins": [],
   "client": [
     "AnvilScreenMixin",
+    "ClientPlayNetworkHandlerMixin",
     "DrawContextMixin",
     "EntityMixin",
     "GameRendererMixin",
