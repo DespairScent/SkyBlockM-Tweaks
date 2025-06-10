@@ -1,7 +1,7 @@
 package despairscent.skyblockm.tweaks.mixin;
 
 import despairscent.skyblockm.tweaks.ModUtils;
-import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScroll;
+import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScrollModule;
 import net.minecraft.client.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,11 +33,11 @@ public class MouseMixin {
                 CLIENT.options.getMouseWheelSensitivity().getValue();
 
         if (vertical >= 1) {
-            if (EsTerminalScroll.doScrollUp(true)) {
+            if (EsTerminalScrollModule.doScrollUp(true)) {
                 ci.cancel();
             }
         } else if (vertical <= -1) {
-            if (EsTerminalScroll.doScrollDown(true)) {
+            if (EsTerminalScrollModule.doScrollDown(true)) {
                 ci.cancel();
             }
         }
