@@ -88,6 +88,22 @@ public class ClothConfigImplementation {
                         .build()
         )).build());
 
+        base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.inventoryDesyncFix"), CONFIG.inventoryDesyncFix.enabled)
+                .setTooltip(i18n("config.inventoryDesyncFix.tooltip"))
+                .setDefaultValue(Config.DEFAULT.inventoryDesyncFix.enabled)
+                .setSaveConsumer(value -> CONFIG.inventoryDesyncFix.enabled = value)
+                .build());
+        base.addEntry(builder.entryBuilder().startSubCategory(moduleSetupText, Arrays.asList(
+                builder.entryBuilder().startBooleanToggle(i18n("config.inventoryDesyncFix.inventoryUpdates"), CONFIG.inventoryDesyncFix.inventoryUpdates)
+                        .setDefaultValue(Config.DEFAULT.inventoryDesyncFix.inventoryUpdates)
+                        .setSaveConsumer(value -> CONFIG.inventoryDesyncFix.inventoryUpdates = value)
+                        .build(),
+                builder.entryBuilder().startBooleanToggle(i18n("config.inventoryDesyncFix.selectedSlot"), CONFIG.inventoryDesyncFix.selectedSlot)
+                        .setDefaultValue(Config.DEFAULT.inventoryDesyncFix.selectedSlot)
+                        .setSaveConsumer(value -> CONFIG.inventoryDesyncFix.selectedSlot = value)
+                        .build()
+        )).build());
+
         base.addEntry(builder.entryBuilder().startBooleanToggle(i18n("config.esTerminalScroll"), CONFIG.esTerminalScroll.enabled)
                 .setDefaultValue(Config.DEFAULT.esTerminalScroll.enabled)
                 .setSaveConsumer(value -> CONFIG.esTerminalScroll.enabled = value)
@@ -152,10 +168,6 @@ public class ClothConfigImplementation {
 
         return builder.build();
     }
-
-    // private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideItemSetup> subGetter) {
-    //     return prepareRenderItemInsideSetup(builder, subGetter, Collections.emptyList());
-    // }
 
     private static List<AbstractConfigListEntry> prepareRenderItemInsideSetup(ConfigBuilder builder, Function<Config, Config.RenderItemInsideItemSetup> subGetter, AbstractConfigListEntry... additional) {
         List<AbstractConfigListEntry> list = Arrays.asList(
