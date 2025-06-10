@@ -2,7 +2,7 @@ package despairscent.skyblockm.tweaks;
 
 import despairscent.skyblockm.tweaks.config.Config;
 import despairscent.skyblockm.tweaks.modules.compactgenome.CompactGenomeModule;
-import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScroll;
+import despairscent.skyblockm.tweaks.modules.esterminalscroll.EsTerminalScrollModule;
 import despairscent.skyblockm.tweaks.modules.inventorydesyncfix.InventoryDesyncFixModule;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -16,7 +16,7 @@ public class ModLoader implements ClientModInitializer {
         CONFIG.save();
 
         CompactGenomeModule.init();
-        EsTerminalScroll.init();
+        EsTerminalScrollModule.init();
         InventoryDesyncFixModule.init();
     }
 
