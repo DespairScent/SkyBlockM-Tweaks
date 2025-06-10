@@ -7,3 +7,5 @@ accessible field net/minecraft/client/render/model/json/ModelOverrideList condit
 accessible field net/minecraft/client/render/model/json/ModelOverrideList overrides [Lnet/minecraft/client/render/model/json/ModelOverrideList$BakedOverride;
 accessible field net/minecraft/client/render/model/json/ModelOverrideList$BakedOverride conditions [Lnet/minecraft/client/render/model/json/ModelOverrideList$InlinedCondition;
 accessible field net/minecraft/client/render/model/json/ModelOverrideList$BakedOverride model Lnet/minecraft/client/render/model/BakedModel;
+
+accessible method net/minecraft/client/network/ClientPlayerInteractionManager syncSelectedSlot ()V

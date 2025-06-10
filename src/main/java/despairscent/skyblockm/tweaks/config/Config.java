@@ -50,6 +50,8 @@ public class Config {
     @SerializedName(value = "textInputLagFix", alternate = {"inputLagFix"})
     public TextInputLagFixConfig textInputLagFix = new TextInputLagFixConfig();
 
+    public InventoryDesyncFix inventoryDesyncFix = new InventoryDesyncFix();
+
     public EsTerminalScrollConfig esTerminalScroll = new EsTerminalScrollConfig();
 
     public CompactGenomeConfig compactGenome = new CompactGenomeConfig();
@@ -123,6 +125,13 @@ public class Config {
 
         public boolean recipesSearch = true;
         public boolean esTerminalSearch = true;
+    }
+
+    public static class InventoryDesyncFix {
+        public boolean enabled = true;
+
+        public boolean inventoryUpdates = true;
+        public boolean selectedSlot = true;
     }
 
     public static class EsTerminalScrollConfig {
