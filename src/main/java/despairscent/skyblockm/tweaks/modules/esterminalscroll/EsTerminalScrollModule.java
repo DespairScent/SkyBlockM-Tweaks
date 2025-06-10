@@ -9,7 +9,7 @@ import net.minecraft.screen.slot.SlotActionType;
 import static despairscent.skyblockm.tweaks.ModUtils.CLIENT;
 import static despairscent.skyblockm.tweaks.ModUtils.CONFIG;
 
-public class EsTerminalScroll {
+public class EsTerminalScrollModule {
 
     private static int tick;
     private static int lastClickAt;
